@@ -2,6 +2,7 @@ import React from 'react'
 import { FlatList, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import { Icon } from 'react-native-elements/dist/icons/Icon';
 import tw from "tailwind-react-native-classnames";
+import { useNavigation } from '@react-navigation/native';
 
 const data = [
     {
@@ -19,6 +20,9 @@ const data = [
 ]
 
 const NavOptions = () => {
+
+    const navigation = useNavigation();
+
     return (
         <View style={{flexDirection: 'row'}}>
             {data.map((item, index) => {
@@ -26,6 +30,7 @@ const NavOptions = () => {
                     <TouchableOpacity 
                         key={index} 
                         style={tw`p-1 pl-6 pb-8 pt-4 bg-gray-200 m-2 rounded-md`}
+                        onPress={() => navigation.navigate(item.screen)}
                     >
                         <View>
                             <Image
